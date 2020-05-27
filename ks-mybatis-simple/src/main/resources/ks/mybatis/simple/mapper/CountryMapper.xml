@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ks.mybatis.simple.mapper.CountryMapper">
+
+    <!-- 由于在 mybatis-config.xml 中已经设置了别名，此处的 resultType 不需要指定包路径 -->
+    <select id="selectAll" resultType="Country">
+        SELECT `id`, `name`, `code` FROM `country`
+    </select>
+
+</mapper>

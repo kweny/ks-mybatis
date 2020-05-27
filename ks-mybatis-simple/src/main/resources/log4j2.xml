@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Properties>
+        <Property name="LOG_EXCEPTION_CONVERSION_WORD">%xwEx</Property>
+        <Property name="LOG_LEVEL_PATTERN">%5p</Property>
+        <Property name="CONSOLE_LOG_PATTERN">%clr{${LOG_LEVEL_PATTERN}} %clr{[%15.15t]}{faint} %clr{:}{faint} %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout charset="UTF-8" pattern="${sys:CONSOLE_LOG_PATTERN}" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <!-- MyBatis 日志配置 -->
+        <Logger name="ks.mybatis.simple.mapper" level="TRACE" additivity="false">
+            <AppenderRef ref="Console" />
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="Console" />
+        </Root>
+    </Loggers>
+</Configuration>

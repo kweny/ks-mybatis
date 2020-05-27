@@ -1,0 +1,19 @@
+version '1.0.0'
+archivesBaseName = 'ks-mybatis-simple'
+
+configurations {
+}
+
+dependencies {
+
+    // MyBatis、数据库驱动
+    implementation 'org.mybatis:mybatis:3.5.4'
+    implementation 'mysql:mysql-connector-java:8.0.19'
+
+    // 使用 slf4j + log4j2 记录日志
+    implementation 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.13.3'
+    implementation 'org.apache.logging.log4j:log4j-api:2.13.3'
+    implementation 'org.apache.logging.log4j:log4j-core:2.13.3'
+
+}

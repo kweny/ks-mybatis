@@ -1,0 +1,61 @@
+// 子模块通用配置
+allprojects {
+    buildscript {
+        repositories {
+            maven { url  "https://dl.bintray.com/apenk/apenk-maven" }
+            maven { url "https://dl.bintray.com/apenk/maven-test/" }
+            maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+            jcenter()
+            mavenCentral()
+        }
+    }
+
+    repositories {
+        maven { url  "https://dl.bintray.com/apenk/apenk-maven" }
+        maven { url "https://dl.bintray.com/apenk/maven-test/" }
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        jcenter()
+        mavenCentral()
+    }
+
+    apply plugin: 'java-library'
+    apply plugin: 'idea'
+
+    // Java 版本
+    sourceCompatibility = 8
+    targetCompatibility = 8
+
+    // 中文编译乱码
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+    group 'ks.mybatis'
+    version = '1.0.0'
+
+    // 扩展定义
+    ext {
+        buildTime = {
+            return new Date().format("yyyyMMddHHmm", TimeZone.getTimeZone("GMT+08:00"))
+        }
+
+    }
+
+    // 排除依赖
+    configurations {
+//        developmentOnly
+//        runtimeClasspath {
+//            extendsFrom developmentOnly
+//        }
+        all*.exclude module: 'spring-boot-starter-tomcat'
+        all*.exclude module: 'spring-boot-starter-logging'
+        all*.exclude module: 'tomcat-jdbc'
+    }
+
+    // 通用依赖
+    dependencies {
+        testImplementation 'junit:junit:4.12'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test:2.2.5.RELEASE'
+
+        implementation 'org.jetbrains:annotations:18.0.0'
+    }
+
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 引入外部配置文件（定义了 JDBC 连接相关信息，如数据库地址、用户名、密码等） -->
+    <properties resource="local-config.properties" />
+
+    <settings>
+        <!-- 使用 logImpl 选项指定使用 LOG4J2 输出日志 -->
+        <setting name="logImpl" value="LOG4J2" />
+    </settings>
+
+    <typeAliases>
+        <!-- 配置一个包的别名，使用该包下的类时不需要指定全限定名 -->
+        <package name="ks.mybatis.simple.entity" />
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+                <property name="" value=""/>
+            </transactionManager>
+            <!-- 配置数据源 -->
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 配置 SQL 语句和映射配置文件的完整路径 -->
+    <mappers>
+        <mapper resource="ks/mybatis/simple/mapper/CountryMapper.xml" />
+    </mappers>
+</configuration>
