@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ks.mybatis.simple.mapper.UserRoleMapper">
+    <!-- 当 Mapper 接口和 XML 关联时，命名空间 namespace 需要设置为接口的全限定名称 -->
 
     <!-- 表和实体类的字段映射 -->
     <!-- 由于在 mybatis-config.xml 中已经设置了别名，此处的 type 不需要指定包路径 -->
