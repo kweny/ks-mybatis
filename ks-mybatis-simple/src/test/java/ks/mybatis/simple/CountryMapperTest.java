@@ -34,7 +34,7 @@ public class CountryMapperTest {
             执行完成后需要关闭 SqlSession 对象，此处使用 try-with-resources 方式自动关闭。
          */
         try (SqlSession session = sqlSessionFactory.openSession()) {
-            List<Country> countryList = session.selectList("selectAll");
+            List<Country> countryList = session.selectList("ks.mybatis.simple.mapper.CountryMapper.selectAll");
             for (Country country : countryList) {
                 System.out.println(country);
             }

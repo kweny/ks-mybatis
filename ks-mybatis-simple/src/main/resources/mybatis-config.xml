@@ -5,9 +5,13 @@
     <!-- 引入外部配置文件（定义了 JDBC 连接相关信息，如数据库地址、用户名、密码等） -->
     <properties resource="local-config.properties" />
 
+    <!-- MyBatis 全局配置 -->
     <settings>
         <!-- 使用 logImpl 选项指定使用 LOG4J2 输出日志 -->
         <setting name="logImpl" value="LOG4J2" />
+
+        <!-- mapUnderscoreToCamelCase 设置为 true，可以自动将数据库中的蛇形列命映射为 Java 对象中的驼峰式属性名 -->
+        <!-- <setting name="mapUnderscoreToCamelCase" value="true" /> -->
     </settings>
 
     <typeAliases>
@@ -32,6 +36,15 @@
 
     <!-- 配置 SQL 语句和映射配置文件的完整路径 -->
     <mappers>
+        <!-- 指定 Mapper 映射文件的路径 -->
         <mapper resource="ks/mybatis/simple/mapper/CountryMapper.xml" />
+
+        <!--
+            通过指定包路径的方式配置 Mapper，这种呢方式会先查找指定包下的所有接口，然后循环对所有接口执行如下操作：
+            1. 判断接口对应的命名空间是否已存在，若存在抛出异常，不存在继续接下来的操作；
+            2. 加载接口对应的 XML 映射文件，将接口全限定名转换为路径，并以 .xml 为后缀搜索 XML 资源，如果找到就解析 XML；
+            3. 处理接口中的注解方法。
+        -->
+        <package name="ks.mybatis.simple.mapper"/>
     </mappers>
 </configuration>
